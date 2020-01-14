@@ -21,8 +21,13 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+credentials: &credentials
+  username: <%= ENV['PG_USERNAME'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
+
 development:
   <<: *default
+  <<: *credentials
   database: travel_friend_development
 
   # The specified database role being used to connect to postgres.
@@ -57,6 +62,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  <<: *credentials
   database: travel_friend_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -81,5 +87,5 @@ test:
 production:
   <<: *default
   database: travel_friend_production
-  username: travel_friend
-  password: <%= ENV['TRAVEL_FRIEND_DATABASE_PASSWORD'] %>
+  username: myapp
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
