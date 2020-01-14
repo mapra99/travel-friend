@@ -1,6 +1,5 @@
-<h1>Nuevo Viaje</h1>
+<% provide :title, "Nuevo Viaje" %>
 <%= form_for :new_travel, url: travels_path, method: :create do |f| %>
-  <h2>Tripulaci&oacute;n</h2>
   <table class="text-center mx-auto">
     <tr>
       <th class="px-1">Nombre</th>

@@ -16,6 +16,30 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <%= link_to yield(:title), root_path, class: 'navbar-brand' %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <%= link_to "Inicio", root_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item border-top">
+              <% if current_traveler %>
+                <span class="label text-secondary">Eres <%=current_traveler.username%></span>
+                <%= link_to 'Cerrar Sesion', destroy_traveler_session_path, method: :delete, class: 'nav-link'%>
+              <% else %>
+                <span class="label text-secondary">No se ha reconocido la sesi&oacute;n</span>
+                <%= link_to 'Iniciar Sesion', new_traveler_session_path, class: 'nav-link'%>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: "alert alert-#{name}" %>
       <% end %>
