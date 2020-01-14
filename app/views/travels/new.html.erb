@@ -1,1 +1,27 @@
-<h1>NEW TRAVEL</h1>
+<h1>Nuevo Viaje</h1>
+<%= form_for :new_travel, url: travels_path, method: :create do |f| %>
+  <h2>Tripulaci&oacute;n</h2>
+  <table class="text-center mx-auto">
+    <tr>
+      <th class="px-1">Nombre</th>
+      <th class="px-1">Auto</th>
+      <th class="px-1">Parqueadero</th>
+    </tr>
+    <% @travelers.each do |t| %>
+      <tr>
+        <td>
+          <%= f.check_box :traveler_name, {multiple: true}, t.id %>
+          <%= f.label :traveler_name, t.first_name, for: "new_travel_traveler_name_#{t.id}" %>
+          <i><%= f.label :traveler_name, "(#{t.username})", for: "new_travel_traveler_name_#{t.id}" %></i>
+        </td>
+        <td>
+          <%= f.check_box :traveler_auto, {multiple: true}, t.id %>
+        </td>
+        <td>
+          <%= f.check_box :traveler_parking, {multiple: true}, t.id %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= f.submit "Guardar Nuevo Viaje"%>
+<% end %>

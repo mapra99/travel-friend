@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class TravelsController < ApplicationController
-  def new; end
+  def new
+    @travelers = Traveler.all
+  end
 
-  def create; end
+  def create
+    byebug
+  end
 end
