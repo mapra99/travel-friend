@@ -4,7 +4,6 @@ class DeviseCreateTravelers < ActiveRecord::Migration[6.0]
   def change
     create_table :travelers do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ''
       t.string :username,           null: false, default: ''
       t.string :encrypted_password, null: false, default: ''
 
@@ -36,8 +35,7 @@ class DeviseCreateTravelers < ActiveRecord::Migration[6.0]
       t.timestamps null: false
     end
 
-    add_index :travelers, :email,                unique: true
-    add_index :travelers, :username,             unique: true
+    add_index :travelers, :username, unique: true
     # add_index :travelers, :reset_password_token, unique: true
     # add_index :travelers, :confirmation_token,   unique: true
     # add_index :travelers, :unlock_token,         unique: true

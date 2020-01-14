@@ -17,13 +17,11 @@ ActiveRecord::Schema.define(version: 20_200_114_045_815) do
   enable_extension 'plpgsql'
 
   create_table 'travelers', force: :cascade do |t|
-    t.string 'email', default: '', null: false
     t.string 'username', default: '', null: false
     t.string 'encrypted_password', default: '', null: false
     t.datetime 'remember_created_at'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
-    t.index ['email'], name: 'index_travelers_on_email', unique: true
     t.index ['username'], name: 'index_travelers_on_username', unique: true
   end
 end
