@@ -7,4 +7,7 @@ class Traveler < ApplicationRecord
          :rememberable
 
   validates :username, uniqueness: true
+
+  has_many :travelers_travels
+  has_many :travels, through: :travelers_travels
 end
