@@ -5,4 +5,6 @@ class Traveler < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :rememberable
+
+  validates :username, uniqueness: true
 end
