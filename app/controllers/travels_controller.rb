@@ -8,6 +8,7 @@ class TravelsController < ApplicationController
   end
 
   def create
+    traveler_params = params[:new_travel]
     if traveler_params[:traveler_name].any? { |x| x != '0' }
       travel = Travel.create
       (0...traveler_params[:traveler_name].length).each do |i|
@@ -40,11 +41,5 @@ class TravelsController < ApplicationController
 
     flash[:success] = 'Viaje borrado'
     redirect_to travels_path
-  end
-
-  private
-
-  def traveler_params
-    params.require(:new_travel)
   end
 end
