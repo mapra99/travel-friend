@@ -2,6 +2,6 @@
 
 Rails.application.routes.draw do
   devise_for :travelers
-  resources :travels, only: %i[new create]
+  resources :travels, only: %i[new create index destroy]
   root 'travels#new'
 end

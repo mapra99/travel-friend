@@ -1,6 +1,6 @@
 <% provide :title, "Nuevo Viaje" %>
 <%= form_for :new_travel, url: travels_path, method: :create do |f| %>
-  <table class="text-center mx-auto">
+  <table class="text-center mx-auto my-2">
     <tr>
       <th class="px-1">Nombre</th>
       <th class="px-1">Auto</th>
@@ -22,5 +22,6 @@
       </tr>
     <% end %>
   </table>
-  <%= f.submit "Guardar Nuevo Viaje"%>
+  <%= f.submit "Guardar Nuevo Viaje", class: 'btn btn-primary'%>
 <% end %>
+<%= link_to "Ver todos los Viajes", travels_path, class: 'btn btn-secondary my-2' %>
