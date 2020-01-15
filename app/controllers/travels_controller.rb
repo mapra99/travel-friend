@@ -19,7 +19,7 @@ class TravelsController < ApplicationController
 
       traveler.save
     end
-
+    flash[:success]="Viaje Registrado"
     redirect_to root_path
   end
 
