@@ -20,7 +20,19 @@ class TravelsController < ApplicationController
       traveler.save
     end
     flash[:success]="Viaje Registrado"
-    redirect_to root_path
+    redirect_to travels_path
+  end
+
+  def index
+    @travels = Travel.all
+  end
+
+  def destroy
+    travel = Travel.find_by_id(params[:id])
+    travel&.destroy
+
+    flash[:success]= "Viaje borrado"
+    redirect_to travels_path
   end
 
   private
