@@ -15,11 +15,13 @@ class TravelsController < ApplicationController
       traveler = travel.travelers_travels.build
       traveler.traveler_id = traveler_params[:traveler_name][i]
       traveler.auto = true unless traveler_params[:traveler_auto][i] == '0'
-      traveler.parking_reserved = true unless traveler_params[:traveler_parking][i] == '0'
+      unless traveler_params[:traveler_parking][i] == '0'
+        traveler.parking_reserved = true
+      end
 
       traveler.save
     end
-    flash[:success]="Viaje Registrado"
+    flash[:success] = 'Viaje Registrado'
     redirect_to travels_path
   end
 
@@ -31,7 +33,7 @@ class TravelsController < ApplicationController
     travel = Travel.find_by_id(params[:id])
     travel&.destroy
 
-    flash[:success]= "Viaje borrado"
+    flash[:success] = 'Viaje borrado'
     redirect_to travels_path
   end
 
