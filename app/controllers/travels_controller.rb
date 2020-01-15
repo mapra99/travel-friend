@@ -8,8 +8,8 @@ class TravelsController < ApplicationController
   end
 
   def create
-    if traveler_params[:traveler_name].any?{|x| x!='0'}
-      travel = Travel.create  
+    if traveler_params[:traveler_name].any? { |x| x != '0' }
+      travel = Travel.create
       (0...traveler_params[:traveler_name].length).each do |i|
         next if traveler_params[:traveler_name][i] == '0'
 
@@ -25,7 +25,7 @@ class TravelsController < ApplicationController
       flash[:success] = 'Viaje Registrado'
       redirect_to travels_path
     else
-      flash[:alert] = "Ingrese al menos 1 viajero"
+      flash[:alert] = 'Ingrese al menos 1 viajero'
       redirect_to new_travel_path
     end
   end
