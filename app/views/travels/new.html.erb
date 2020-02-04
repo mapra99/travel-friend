@@ -1,27 +1,19 @@
 <% provide :title, "Nuevo Viaje" %>
 <%= form_for :new_travel, url: travels_path, method: :create do |f| %>
-  <table class="text-center mx-auto my-2">
-    <tr>
-      <th class="px-1">Nombre</th>
-      <th class="px-1">Auto</th>
-      <th class="px-1">Parqueadero</th>
-    </tr>
+
+  <%= f.label :auto %>
+  <%= f.select :auto, options_from_collection_for_select(@travelers, "id", "username") %>
+  
+  <h5>Viajan: </h5>
+  <ul class="text-center mx-auto my-2" style="list-style-type: none">
     <% @travelers.each do |t| %>
-      <tr>
-        <td>
-          <%= f.check_box :traveler_name, {multiple: true}, t.id %>
-          <%= f.label :traveler_name, t.first_name, for: "new_travel_traveler_name_#{t.id}" %>
-          <i><%= f.label :traveler_name, "(#{t.username})", for: "new_travel_traveler_name_#{t.id}" %></i>
-        </td>
-        <td>
-          <%= f.check_box :traveler_auto, {multiple: true}, t.id %>
-        </td>
-        <td>
-          <%= f.check_box :traveler_parking, {multiple: true}, t.id %>
-        </td>
-      </tr>
+      <li>
+        <%= f.check_box :traveler_name, {multiple: true}, t.id %>
+        <%= f.label :traveler_name, t.first_name, for: "new_travel_traveler_name_#{t.id}" %>
+        <i><%= f.label :traveler_name, "(#{t.username})", for: "new_travel_traveler_name_#{t.id}" %></i>
+      </li>
     <% end %>
-  </table>
+  </ul>
   <%= f.submit "Guardar Nuevo Viaje", class: 'btn btn-primary'%>
 <% end %>
 <%= link_to "Ver todos los Viajes", travels_path, class: 'btn btn-secondary my-2' %>
