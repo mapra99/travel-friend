@@ -13,4 +13,5 @@ class Traveler < ApplicationRecord
 
   has_many :travelers_travels
   has_many :travels, through: :travelers_travels
+  has_many :auto_travels, class_name: 'Travel', foreign_key: :auto_id
 end
